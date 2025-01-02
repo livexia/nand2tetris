@@ -25,7 +25,7 @@ CHIP DMux8Way {
 
 
     DMux4Way(in=in, sel=sel[0..1], a=o00, b=o01, c=o10, d=o11);
-    // a has same sel[1], sel[2] as b, so a select from o01 and b select from a10
+    // a has same sel[1], sel[2] as b, so a select from o00 and b select from o01
     DMux(in=o00, sel=sel[2], a=a, b=e);
     DMux(in=o01, sel=sel[2], a=b, b=f);
     DMux(in=o10, sel=sel[2], a=c, b=g);
