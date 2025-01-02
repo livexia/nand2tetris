@@ -18,15 +18,16 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    DMux(in=in, sel=sel[0], a=o0, b=o1);
+    // DMux(in=in, sel=sel[0], a=o0, b=o1);
     
-    DMux(in=o0, sel=sel[1], a=o00, b=o01);
-    DMux(in=o1, sel=sel[1], a=o10, b=o11);
+    // DMux(in=o0, sel=sel[1], a=o00, b=o10);
+    // DMux(in=o1, sel=sel[1], a=o01, b=o11);
 
-    // a has same sel[1], sel[2] as b, so a select from o00 and b select from a10
+
+    DMux4Way(in=in, sel=sel[0..1], a=o00, b=o01, c=o10, d=o11);
+    // a has same sel[1], sel[2] as b, so a select from o01 and b select from a10
     DMux(in=o00, sel=sel[2], a=a, b=e);
-    DMux(in=o10, sel=sel[2], a=b, b=f);
-    DMux(in=o01, sel=sel[2], a=c, b=g);
+    DMux(in=o01, sel=sel[2], a=b, b=f);
+    DMux(in=o10, sel=sel[2], a=c, b=g);
     DMux(in=o11, sel=sel[2], a=d, b=h);
-
 }
